@@ -1,4 +1,4 @@
-package com.projectone.spring;
+package com.projectone.spring.controller;
 
 import com.projectone.core.base.ReadDB;
 import com.projectone.core.dao.Restaurant;

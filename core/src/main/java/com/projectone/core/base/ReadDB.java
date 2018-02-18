@@ -200,6 +200,7 @@ public class ReadDB {
         }
         return arrayRestaurants;
     }
+
 /*
     public List getAll(String query, Class classname){
         arrayRestaurants = new ArrayList<>();
