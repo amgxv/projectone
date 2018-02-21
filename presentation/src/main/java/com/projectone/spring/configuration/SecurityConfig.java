@@ -36,9 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 */
         http.authorizeRequests()
-                .antMatchers("/", "/home", "/index", "/ftl").permitAll()
-                //.antMatchers("/rest/api/v1/").hasAuthority("ADMIN")
-                //.anyRequest().authenticated()
+                .antMatchers("/", "/home", "/index").permitAll()
+                .antMatchers("/rest/api/v1/").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and()
             .formLogin()
                 .loginPage("/login")

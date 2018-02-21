@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Controller
 public class HomeController {
-    @RequestMapping("/ftl")
+    @RequestMapping("/")
     public String index(@ModelAttribute("model") ModelMap model) {
         ReadDB dbManager = new ReadDB();
         List<Restaurant> lRestaurants = dbManager.readRestaurantAPI(false);
