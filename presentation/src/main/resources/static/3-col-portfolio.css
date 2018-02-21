@@ -1,0 +1,75 @@
+/*!
+ * Start Bootstrap - 3 Col Portfolio (https://startbootstrap.com/template-overviews/3-col-portfolio)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-3-col-portfolio/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.pagination {
+  margin-bottom: 30px;
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.img-hack {
+  max-height: 450px;
+  object-fit: cover;
+}
+
+.col-lg-4 {
+  margin-bottom: 20px;
+}
+
+.pb-5, .py-5{
+  padding-bottom: 1rem !important;
+}
+
+.pt-5, .py-5{
+  padding-top: 1rem !important;
+}
+
+.rest{
+  margin-bottom: 20px;
+}
+
+.opi{
+  margin: 10px;
+}
+
+.dropdown-menu{
+  right: 0;
+  left: auto;
+}
+
+.btn-group{
+  margin-left: 10px;
+}
+
+.mrg{
+  margin: 10px;
+}
+
+/*
+footer{
+  width: 100%;
+  bottom: 0;
+  clear: both;
+}
+*/
