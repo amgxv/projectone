@@ -1,4 +1,4 @@
-package com.projectone.spring;
+package donotuse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
