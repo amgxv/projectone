@@ -12,14 +12,6 @@
     <artifactId>core</artifactId>
 
     <dependencies>
-        <!-- Aqui hay que añadir el OJDBC -->
-        <dependency>
-            <groupId>com.oracle.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>12.2.0.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/lib/ojdbc8.jar</systemPath>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -49,5 +41,39 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app  will need. -->
+            <!-- By default that is to put the resulting archive into the deployments folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different environments.html -->
+            <id>openshift</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <version>2.5.2</version>
+                        <configuration>
+                            <groupId>com.oracle.jdbc</groupId>
+                            <artifactId>ojdbc8</artifactId>
+                            <version>12.2.0.1</version>
+                            <packaging>jar</packaging>
+                            <file>ojdbc8.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>install-jar-lib</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>validate</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
