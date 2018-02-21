@@ -18,6 +18,11 @@
             <artifactId>javax.persistence-api</artifactId>
             <version>2.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.3</version>
+        </dependency>
 
     </dependencies>
     <profiles>
@@ -34,11 +39,11 @@
                         <artifactId>maven-install-plugin</artifactId>
                         <version>2.5.2</version>
                         <configuration>
-                            <groupId>com.oracle.jdbc</groupId>
-                            <artifactId>ojdbc8</artifactId>
-                            <version>12.2.0.1</version>
+                            <groupId>com.oracle</groupId>
+                            <artifactId>ojdbc6</artifactId>
+                            <version>11.2.0.3</version>
                             <packaging>jar</packaging>
-                            <file>ojdbc8.jar</file>
+                            <file>ojdbc6-11.2.0.3.jar</file>
                             <generatePom>true</generatePom>
                         </configuration>
                         <executions>
