@@ -28,7 +28,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-war-plugin</artifactId>
-                        <version>3.2.0</version>
+                        <version>2.4</version>
                         <configuration>
                             <outputDirectory>target</outputDirectory>
                             <warName>ROOT</warName>
@@ -38,6 +38,18 @@
             </build>
         </profile>
     </profiles>
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
     <build>
         <plugins>
             <plugin>

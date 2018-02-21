@@ -20,27 +20,6 @@
         </dependency>
 
     </dependencies>
-    <build>
-        <plugins>
-            <!-- Con este plugin metemos en un jar las dependencias de nuestro proyecto -->
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <profiles>
         <profile>
             <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
