@@ -10,8 +10,8 @@
 
 <h1>Log in</h1>
 
-<p>You can use: joanet / undostres</p>
-<p>or : tomevet / quatre</p>
+<p>You can use: joanet / undostres [ADMIN]</p>
+<p>or : tomevet / quatre [USER]</p>
 
 <form role="form" class="col-md-12" action="/login" method="post">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
