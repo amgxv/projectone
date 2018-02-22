@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Restaurants</title>
     <meta charset="utf-8">
@@ -35,11 +36,7 @@
                 <a class="nav-link" href="/ajaxtemplate.html">AJAX</a>
             </li>
             <li class="nav-item">
-            <form action="/logout" method="post">
-                <input type="hidden"
-                       th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <input type="submit" value="Log Out">
-            </form>
+                <a class="nav-link" href="/logout" ">Log Out</a>
             </li>
         </ul>
         </div>
