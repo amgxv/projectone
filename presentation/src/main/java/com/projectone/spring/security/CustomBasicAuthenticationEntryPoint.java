@@ -1,6 +1,5 @@
 package com.projectone.spring.security;
 
-import com.projectone.spring.configuration.SecurityConfig;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 

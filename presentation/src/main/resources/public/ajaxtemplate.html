@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+<div class="myRests"></div>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        console.log($("#myTitle").html());
+        $.get("/rest/api/v1/restaurants", function (data) {
+            console.log(data);
+            var contentHtml = "<h2>Restaurantes Sacados Por Ajax</h2>";
+            $.each(data, function( index, value ) {
+                var cell= "<div>Name :"+value.name+"</div>" +
+                    "<div>Address : "+value.address+"</div>" +
+                    "<div>Rating : "+value.mitjana+"</div>" +
+                    "<div>Type : "+value.type+"</div>" +
+                    "<div>Phone : "+value.numero+"</div>" +
+                    "<div>Website : "+value.website+"</div>" +
+                "<br>";
+                contentHtml += cell;
+            });
+            $(".myRests").html(contentHtml);
+            console.log("Load was performed.");
+        });
+    });
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/rest/api/v1")
-public class RestaurantsController {
+public class ApiController {
 
     @RequestMapping(path = "/restaurants")//, method = RequestMethod.GET)
     public List<Restaurant> getAll(@RequestParam(value = "name", defaultValue = "") String name) {

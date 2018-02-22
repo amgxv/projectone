@@ -1,10 +1,9 @@
-package com.projectone.spring.configuration;
+package com.projectone.spring.security;
 
 import com.projectone.spring.security.CustomBasicAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -28,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("tomevet").password("quatre").roles("USER");
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 /*	  http.csrf().disable()
@@ -35,17 +35,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  	.antMatchers(RestApiController.REST_API_MAPPING+"/**").hasRole("ADMIN")
 		.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 */
-        http.authorizeRequests()
-                .antMatchers("/", "/home", "/index").permitAll()
-                .antMatchers("/rest/api/v1/").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
+
+    http.authorizeRequests()
+
+            .antMatchers("/**", "/public/**","/css/**").permitAll()
+            .antMatchers("/rest/api/v1/**").hasRole("ADMIN")
+            .anyRequest().fullyAuthenticated()
+            .and()
             .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
+            .loginPage("/login")
+            .failureUrl("/login?error")
+            .permitAll()
+            .and()
             .logout()
-                .permitAll();
+            .logoutUrl("/logout")
+            .deleteCookies("remember-me")
+            .logoutSuccessUrl("/")
+            .permitAll()
+            .and()
+            .rememberMe();
+
     }
 
     @Bean
@@ -53,8 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomBasicAuthenticationEntryPoint();
     }
 
+    /*
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+        web.ignoring().antMatchers("/static/**");
+
     }
+    */
+
 }
