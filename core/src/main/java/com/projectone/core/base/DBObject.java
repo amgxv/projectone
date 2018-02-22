@@ -1,7 +1,7 @@
 package com.projectone.core.base;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Basic class for saving object into an H2 or Derby system by default
  */
 public abstract class DBObject implements IDatabaseActions {
-    private final Logger log = LoggerFactory.getLogger(DBObject.class);
+    //private final Logger logger = LoggerFactory.getLogger(DBObject.class);
 
     protected abstract void beforeSave();
 
@@ -21,14 +21,14 @@ public abstract class DBObject implements IDatabaseActions {
         try{
             beforeSave();
         }catch (Exception e){
-            log.error("Saving data",e);
+            //logger.error("Saving data",e);
         }
     }
     public void delete(){
-        log.error("Not implemented yet");
+        //logger.error("Not implemented yet");
     }
     public void update(){
-        log.error("Not implemented yet");
+        //logger.error("Not implemented yet");
     }
 
     public List<DBObject> getAll() {
@@ -41,7 +41,7 @@ public abstract class DBObject implements IDatabaseActions {
      */
     protected void doLog(String txt){
         System.out.println("dbOperation:" + txt);
-        log.warn(txt);
+        //logger.warn(txt);
     }
 
 }
