@@ -36,6 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 */
 
+/*
+            .loginPage("/login")
+            .failureUrl("/login?error")
+*/
+
     http.authorizeRequests()
 
             .antMatchers("/", "/public/**","/css/**").permitAll()

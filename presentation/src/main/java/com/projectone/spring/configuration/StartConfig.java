@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
  * Created by : tech in 18/02/18.
  * Description :
  */
-@Configuration
+//@Configuration
 public class StartConfig {
     @Bean
     public WebMvcConfigurer corsConfigurer() {

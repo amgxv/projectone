@@ -57,7 +57,7 @@
 <a href=<"#"><img id="imgg" class="card-img-top img-fluid" src="${item.images!""}" alt="\"></a>
 <div class="card-body">
 <h4 class="card-title">
-<a href="#"}">${item.name!""}</a>
+<a href="${item.website!""}">${item.name!""}</a>
 </h4>
 <div class="row">
 <div class="col-sm-12 mr-auto"><i class="material-icons align-bottom">place</i>${item.address!""}</div>
