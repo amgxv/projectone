@@ -36,6 +36,41 @@ public class ReadDB {
         }
     }
 
+    public List readRestaurantAPI(boolean isTraditionalSearch) {
+        List<Restaurant> arrayRestaurants = new ArrayList<>();
+        ResultSetMapper<Restaurant> mapper = new ResultSetMapper<>();
+        try {
+            final String query = "SELECT R.RES_CODI,R.RES_NOM,R.RES_ADRECA,R.RES_WEB,R.RES_TELEFON,R.RES_URL_IMG,R.RES_MITJANA, TR.TRS_DESCRIPCIO FROM " +
+                    "RESTAURANTS R,TRESTAURANTS TR WHERE  R.RES_TRS_CODI = TR.TRS_CODI";
+            if (isTraditionalSearch) {
+                //VERSION GENERICS
+                Class.forName(DRIVER);
+                Connection con = DriverManager.getConnection(THIN_URL, USER, PASSWORD);
+                Statement stmt = con.createStatement();
+                // Aquí feim una Query directament a la com.projectone.core.base de dades:
+                ResultSet rs = stmt.executeQuery(query);
+                // I aquí indicam que mentres hi hagi mes restaurants, segueixi impriment-los.
+                arrayRestaurants = mapper.mapResultSetToObject(rs, Restaurant.class);
+                stmt.close();
+                con.close();
+            } else {
+                //VERSION FUNCTIONAL
+                arrayRestaurants = new ArrayList<>();
+                Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
+                    public Object apply(ResultSet rs) {
+                        return mapper.mapResultSetToObject(rs, Restaurant.class);
+                    }
+                };
+                arrayRestaurants = (ArrayList) executeQuery(query, func);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return arrayRestaurants;
+    }
+
+    /*
+
     private Object executePreparedStatement(String query
             , Function<PreparedStatement, PreparedStatement> psFunction
             , Function<ResultSet, Object> f) {
@@ -55,6 +90,7 @@ public class ReadDB {
             return null;
         }
     }
+
 
     public List<Restaurant> readRestaurant(String search) {
         List<Restaurant> arrayRestaurants = new ArrayList<>();
@@ -80,6 +116,26 @@ public class ReadDB {
         }
         return arrayRestaurants;
     }
+
+        private Object searchPreparedDB(String query
+            , Function<PreparedStatement, PreparedStatement> fps // Modifica la query
+            , Function<ResultSet, Object> f) { // Convierte a datos java
+        try {
+
+            Class.forName(DRIVER); //Driver DB (Como nos conectamos)
+            Connection con = DriverManager.getConnection(THIN_URL, USER, PASSWORD); // Se le dan los "valores" de la conexión
+            PreparedStatement ps = con.prepareStatement(query); // Se prepara la query deseada
+            ps = fps.apply(ps); // Modificamos el PS con los valores necesarios para la query correcta
+            ResultSet rs = ps.executeQuery(); // Ejecuta la query
+            Object o = f.apply(rs); // Convertimos resultado de query a cualquier objeto o coleccion valida (beans, list..)
+            con.close(); // Cierra conexión
+            return o; // Devuelve el objeto
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
 
     public static Restaurant readRestaurantInfo(String id) {
         Restaurant restaurant = null;
@@ -146,38 +202,6 @@ public class ReadDB {
         return arrayOpinions;
     }
 
-    public List readRestaurantAPI(boolean isTraditionalSearch) {
-        List<Restaurant> arrayRestaurants = new ArrayList<>();
-        ResultSetMapper<Restaurant> mapper = new ResultSetMapper<>();
-        try {
-            final String query = "SELECT R.RES_CODI,R.RES_NOM,R.RES_ADRECA,R.RES_WEB,R.RES_TELEFON,R.RES_URL_IMG,R.RES_MITJANA, TR.TRS_DESCRIPCIO FROM " +
-                    "RESTAURANTS R,TRESTAURANTS TR WHERE  R.RES_TRS_CODI = TR.TRS_CODI";
-            if (isTraditionalSearch) {
-                //VERSION GENERICS
-                Class.forName(DRIVER);
-                Connection con = DriverManager.getConnection(THIN_URL, USER, PASSWORD);
-                Statement stmt = con.createStatement();
-                // Aquí feim una Query directament a la com.projectone.core.base de dades:
-                ResultSet rs = stmt.executeQuery(query);
-                // I aquí indicam que mentres hi hagi mes restaurants, segueixi impriment-los.
-                arrayRestaurants = mapper.mapResultSetToObject(rs, Restaurant.class);
-                stmt.close();
-                con.close();
-            } else {
-                //VERSION FUNCTIONAL
-                arrayRestaurants = new ArrayList<>();
-                Function<ResultSet, Object> func = new Function<ResultSet, Object>() {
-                    public Object apply(ResultSet rs) {
-                        return mapper.mapResultSetToObject(rs, Restaurant.class);
-                    }
-                };
-                arrayRestaurants = (ArrayList) executeQuery(query, func);
-            }
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-        return arrayRestaurants;
-    }
 
     public List<Restaurant> getRestaurantWithPS(String searchName) {
         List<Restaurant> arrayRestaurants = new ArrayList<>();
@@ -201,7 +225,7 @@ public class ReadDB {
         return arrayRestaurants;
     }
 
-/*
+
     public List getAll(String query, Class classname){
         arrayRestaurants = new ArrayList<>();
         Function<ResultSet, Object> func = new Function<ResultSet, Object>() {

@@ -30,16 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*	  http.csrf().disable()
-          .authorizeRequests()
-	  	.antMatchers(RestApiController.REST_API_MAPPING+"/**").hasRole("ADMIN")
-		.and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
-*/
-
-/*
-            .loginPage("/login")
-            .failureUrl("/login?error")
-*/
 
     http.authorizeRequests()
 
@@ -67,12 +57,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomBasicAuthenticationEntryPoint();
     }
 
-    /*
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/static/**");
-
-    }
-    */
 
 }

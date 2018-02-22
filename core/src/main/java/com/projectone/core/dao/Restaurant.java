@@ -2,14 +2,12 @@ package com.projectone.core.dao;
 
 // Classe Restaurant
 
-import com.projectone.core.base.DBObject;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 
 @Entity()
-public class Restaurant extends DBObject {
+public class Restaurant {
     @Column(name="RES_CODI")
     private String code;
     @Column(name="RES_NOM")
@@ -72,9 +70,6 @@ public class Restaurant extends DBObject {
     }
 
 
-
-
-
     // Setters;
 
     public void setCode(String code) { this.code = code; }
@@ -112,10 +107,6 @@ public class Restaurant extends DBObject {
     }
 
 
-    protected void beforeSave() {
-        doLog(String.format("Saving %s", this.getClass().getCanonicalName()));
-        System.out.println("Saving users");
-    }
 
 
 }
