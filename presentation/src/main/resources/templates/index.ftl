@@ -31,13 +31,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="/rest/api/v1/restaurants">API REST</a>
             </li>
-            <!--
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+                <a class="nav-link" href="/ajaxtemplate.html">AJAX</a>
             </li>
-            -->
+            <li class="nav-item">
+            <form action="/logout" method="post">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <input type="submit" value="Log Out">
+            </form>
+            </li>
         </ul>
-
         </div>
     </div>
 </nav>
