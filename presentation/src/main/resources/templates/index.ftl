@@ -50,6 +50,7 @@
 <div class="container">
     <h1 class="my-4"> Restaurants <small>a Palma de Mallorca</small></h1>
 <div class="row">
+    <#-- Si existe el atributo list, del model (definido en HomeController) los lista como items -->
 <#if model??>
     <#list model["list"] as item>
 <div class="col-lg-4 col-sm-6 portfolio-item">

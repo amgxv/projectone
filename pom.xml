@@ -2,22 +2,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Versión del modelo -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Datos del proyecto -->
     <groupId>com.iesemilidarder.projectone</groupId>
     <artifactId>project-one</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <!-- Modo de empaquetado -->
+    <packaging>pom</packaging>
+    <!-- Le decimos que Spring Boot es su padre, ya que se fundamenta en este framework -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.10.RELEASE</version>
     </parent>
+    <!-- Módulos que incluye el proyecto -->
     <modules>
         <module>core</module>
         <module>presentation</module>
     </modules>
     <profiles>
+        <!-- Perfil Openshift, necesario para el despliegue en Openshift -->
         <profile>
             <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
             <!-- Use this profile for any OpenShift specific customization your app  will need. -->
@@ -27,10 +33,15 @@
             <build>
                 <plugins>
                     <plugin>
+                        <!-- Plugin para archivos WAR en Maven -->
                         <artifactId>maven-war-plugin</artifactId>
                         <version>3.2.0</version>
                         <configuration>
+                            <!-- Directorio de salida -->
                             <outputDirectory>target</outputDirectory>
+                            <!-- Nombre del WAR,
+                                 ROOT ya que queremos que se despliegue en la raíz
+                             -->
                             <warName>ROOT</warName>
                         </configuration>
                     </plugin>
@@ -38,6 +49,7 @@
             </build>
         </profile>
     </profiles>
+    <!-- Repositorios para Spring. Plugins, librerías... -->
     <repositories>
         <repository>
             <id>spring-releases</id>
@@ -50,6 +62,7 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
+    <!-- Le decimos que haga el build con el compilador de Maven -->
     <build>
         <plugins>
             <plugin>
@@ -64,23 +77,28 @@
             </plugin>
         </plugins>
     </build>
+    <!-- Dependencias -->
     <dependencies>
+        <!-- Librerías de Apache, incluyen componentes de Java reutilizables -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <!-- Ayuda a definir las propiedades de los beans -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
         </dependency>
+        <!-- Implementa como se va a manejar el JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.5.1</version>
         </dependency>
+        <!-- Añade un conjunto de anotaciones vinculadas a los tipos definidos en el paquete databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

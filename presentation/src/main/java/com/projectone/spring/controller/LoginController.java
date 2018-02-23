@@ -10,11 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
+// Controlador de Login
 @Controller
 public class LoginController {
 
+    // Obtiene un Log
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
+    // Mapea la página de Login en /login
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
         LOGGER.debug("Getting login page, error={}", error);

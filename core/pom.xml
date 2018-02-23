@@ -2,30 +2,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Indica quien es el padre del módulo, de donde viene todo -->
     <parent>
         <artifactId>project-one</artifactId>
         <groupId>com.iesemilidarder.projectone</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <!-- Versión del modelo -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Artifact ID -->
     <artifactId>core</artifactId>
 
+    <!-- Dependencias del módulo -->
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+        <!-- JPA. Sirve para el mapeo de la base de datos con un Bean -->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
             <version>2.2</version>
         </dependency>
+        <!-- Driver para conectar con BD Oracle -->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.3</version>
         </dependency>
-
     </dependencies>
+
     <profiles>
+        <!-- Perfil Openshift, necesario para el despliegue en Openshift -->
         <profile>
             <!-- When built in OpenShift the openshift profile will be used when invoking  mvn. -->
             <!-- Use this profile for any OpenShift specific customization your app  will need. -->
@@ -35,10 +42,12 @@
             <build>
                 <plugins>
                     <plugin>
+                        <!-- Plugin Maven -->
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-install-plugin</artifactId>
                         <version>2.5.2</version>
                         <configuration>
+                            <!-- Configuración del driver de Oracle, para que nos haga el deploy con el driver -->
                             <groupId>com.oracle</groupId>
                             <artifactId>ojdbc6</artifactId>
                             <version>11.2.0.3</version>

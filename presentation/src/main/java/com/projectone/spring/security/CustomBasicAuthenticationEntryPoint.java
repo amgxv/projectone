@@ -14,6 +14,8 @@ import java.io.PrintWriter;
  * Class
  * By berto. 12/02/2018
  */
+
+// Clase de Spring Security para la autenticación
 public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
 
     @Override

@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+
+// Controlador REST de nuestra API REST, lo mapea en /rest/api/v1
 @RestController
 @RequestMapping(path = "/rest/api/v1")
 public class ApiController {
 
+    // Devuelve la lista de los restaurantes que saca de nuestra BD en el path /restaurants
     @RequestMapping(path = "/restaurants")//, method = RequestMethod.GET)
     public List<Restaurant> getAll(@RequestParam(value = "name", defaultValue = "") String name) {
         ReadDB dbManager = new ReadDB();

@@ -1,14 +1,17 @@
 package com.projectone.core.dao;
 
-// Classe Restaurant
+// Clase Restaurante, define el objeto en sí, y los atributos que tiene.
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.ArrayList;
 
+// Definimos la entidad
 @Entity()
 public class Restaurant {
+    // @Column = columna en la base de datos
     @Column(name="RES_CODI")
+    // String = atributos de nuestra clase
     private String code;
     @Column(name="RES_NOM")
     private String name;
@@ -25,13 +28,16 @@ public class Restaurant {
     @Column(name="RES_MITJANA")
     private String mitjana;
 
-    private ArrayList<Opinio> opinions;
+    //private ArrayList<Opinio> opinions;
 
+/*
     // Constructor que inicialitza l'arraylist de les opinions
 
     public Restaurant() {
         this.opinions = new ArrayList<Opinio>();
     }
+*/
+
 
     // Getters;
 
@@ -65,9 +71,9 @@ public class Restaurant {
         return mitjana;
     }
 
-    public ArrayList<Opinio> getOpinions() {
+    /*public ArrayList<Opinio> getOpinions() {
         return opinions;
-    }
+    }*/
 
 
     // Setters;
@@ -102,9 +108,9 @@ public class Restaurant {
         this.mitjana = mitjana;
     }
 
-    public void setOpinions(ArrayList<Opinio> opinions) {
-        this.opinions = opinions;
-    }
+//    public void setOpinions(ArrayList<Opinio> opinions) {
+//        this.opinions = opinions;
+//    }
 
 
 

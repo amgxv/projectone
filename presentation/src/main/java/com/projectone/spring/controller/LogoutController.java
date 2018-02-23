@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+// Controlador de Logout
 @Controller
 public class LogoutController {
 
+    // Mapea el logout en /logout. Ejecuta "un Servlet" que nos desloguea. (Encontrado por Internet)
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

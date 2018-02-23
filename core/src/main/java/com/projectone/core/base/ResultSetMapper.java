@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Clase genérica para el mapeo de los datos de la BD con los Beans
+
 public class ResultSetMapper<T> {
     @SuppressWarnings("unchecked")
     public List<T> mapResultSetToObject(ResultSet rs, Class outputClass) {

@@ -23,8 +23,13 @@ import java.util.List;
  * Created by : tech in 18/02/18.
  * Description :
  */
+
+
+// Controlador "home"
 @Controller
 public class HomeController {
+
+    // Mapea nuestra página de inicio en la raíz. Lee los restaurantes en la BD, y les da el atrubuto "list" para la lectura con Freemarker
     @RequestMapping("/")
     public String index(@ModelAttribute("model") ModelMap model) {
         ReadDB dbManager = new ReadDB();

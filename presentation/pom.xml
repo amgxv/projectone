@@ -2,60 +2,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Indica quien es el padre del módulo, de donde viene todo -->
     <parent>
         <artifactId>project-one</artifactId>
         <groupId>com.iesemilidarder.projectone</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <!-- Versión del modelo -->
     <modelVersion>4.0.0</modelVersion>
+    <!-- Modo de empaquetado -->
     <packaging>war</packaging>
 
+    <!-- Artifact ID -->
     <artifactId>presentation</artifactId>
 
+    <!-- Dependencias -->
     <dependencies>
+        <!-- Inicia Spring Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- Inicia módulo de testing en Spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Inicia Spring Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- Freemarker para Spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+        <!-- Implementa JSONPath en Java -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.23</version>
         </dependency>
+        <!-- Importa el contexto del framework Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- Módulo Core, "donde está la parte lógica" -->
         <dependency>
             <groupId>com.iesemilidarder.projectone</groupId>
             <artifactId>core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <!-- Implementa Servlets -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
     </dependencies>
+    <!-- Hace el build con Spring Boot -->
     <build>
         <plugins>
             <plugin>
