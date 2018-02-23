@@ -10,22 +10,22 @@ import java.util.ArrayList;
 @Entity()
 public class Restaurant {
     // @Column = columna en la base de datos
-    @Column(name="RES_CODI")
+    @Column(name = "RES_CODI")
     // String = atributos de nuestra clase
     private String code;
-    @Column(name="RES_NOM")
+    @Column(name = "RES_NOM")
     private String name;
-    @Column(name="RES_ADRECA")
+    @Column(name = "RES_ADRECA")
     private String address;
-    @Column(name="RES_WEB")
+    @Column(name = "RES_WEB")
     private String website;
-    @Column(name="RES_TELEFON")
+    @Column(name = "RES_TELEFON")
     private String numero;
-    @Column(name="TRS_DESCRIPCIO")
+    @Column(name = "TRS_DESCRIPCIO")
     private String type;
-    @Column(name="RES_URL_IMG")
+    @Column(name = "RES_URL_IMG")
     private String images;
-    @Column(name="RES_MITJANA")
+    @Column(name = "RES_MITJANA")
     private String mitjana;
 
     //private ArrayList<Opinio> opinions;
@@ -41,7 +41,9 @@ public class Restaurant {
 
     // Getters;
 
-    public String getCode() { return code; }
+    public String getCode() {
+        return code;
+    }
 
     public String getName() {
         return name;
@@ -78,7 +80,9 @@ public class Restaurant {
 
     // Setters;
 
-    public void setCode(String code) { this.code = code; }
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -111,8 +115,6 @@ public class Restaurant {
 //    public void setOpinions(ArrayList<Opinio> opinions) {
 //        this.opinions = opinions;
 //    }
-
-
 
 
 }

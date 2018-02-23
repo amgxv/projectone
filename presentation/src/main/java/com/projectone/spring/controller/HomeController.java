@@ -34,7 +34,7 @@ public class HomeController {
     public String index(@ModelAttribute("model") ModelMap model) {
         ReadDB dbManager = new ReadDB();
         List<Restaurant> lRestaurants = dbManager.readRestaurantAPI(false);
-        model.addAttribute("list",lRestaurants);
+        model.addAttribute("list", lRestaurants);
         return "index";
     }
 

@@ -34,28 +34,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-    http.authorizeRequests()
+        http.authorizeRequests()
 
-            // Permite el acceso a todos
-            .antMatchers("/", "/public/**","/css/**").permitAll()
-            // Solo permite el acceso a los admins
-            .antMatchers("/rest/api/v1/**").hasRole("ADMIN")
-            .anyRequest().fullyAuthenticated()
-            .and()
-            // Define el formulario de login
-            .formLogin()
-            .loginPage("/login")
-            .failureUrl("/login?error")
-            .permitAll()
-            .and()
-            // Define el logout
-            .logout()
-            .logoutUrl("/logout")
-            .deleteCookies("remember-me")
-            .logoutSuccessUrl("/")
-            .permitAll()
-            .and()
-            .rememberMe();
+                // Permite el acceso a todos
+                .antMatchers("/", "/public/**", "/css/**").permitAll()
+                // Solo permite el acceso a los admins
+                .antMatchers("/rest/api/v1/**").hasRole("ADMIN")
+                .anyRequest().fullyAuthenticated()
+                .and()
+                // Define el formulario de login
+                .formLogin()
+                .loginPage("/login")
+                .failureUrl("/login?error")
+                .permitAll()
+                .and()
+                // Define el logout
+                .logout()
+                .logoutUrl("/logout")
+                .deleteCookies("remember-me")
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
+                .rememberMe();
 
     }
 

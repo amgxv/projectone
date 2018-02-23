@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>AJAX</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="/">Restaurants</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -35,7 +43,8 @@
 </nav>
 <!-- Carga los datos del script -->
 <div class="myRests"></div>
-<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
 <!-- Script que obtiene los datos de la API, los carga en memoria, y luego los muestra en el cliente con una presentación "decente" -->
 <script>
     $(document).ready(function () {
@@ -43,25 +52,26 @@
         $.get("/rest/api/v1/restaurants", function (data) {
             console.log(data);
             var contentHtml = "<h2>Restaurantes Sacados Por Ajax</h2>";
-            $.each(data, function( index, value ) {
-                var cell=
+            $.each(data, function (index, value) {
+                var cell =
                     "<div class='row center mt-2'>" +
                     "<div class='col'>" +
                     "<div class='media mt-5 ml-5'>" +
-                    "<img class='align-self-start mr-3 rounded-circle' src="+value.images+" alt='Random Image' width='80' height='80'>" +
+                    "<img class='align-self-start mr-3 rounded-circle' src=" + value.images + " alt='Random Image' width='80' height='80'>" +
                     "<div class='media-body'>" +
-                    "<a href='" +value.website +"'><h5 class='mt-0'>" + value.name + "</h5></a>" +
-                    "<p>"+value.address+"</p>"+
-                    "<p>"+value.type+"</p>"+
-                    "<p>"+value.mitjana+"</p>"+
-                    "<p>"+value.numero+"</p>"+
-                    "</div>"+
-                    "</div>"+
-                    "</div>"+
+                    "<a href='" + value.website + "'><h5 class='mt-0'>" + value.name + "</h5></a>" +
+                    "<p>" + value.address + "</p>" +
+                    "<p>" + value.type + "</p>" +
+                    "<p>" + value.mitjana + "</p>" +
+                    "<p>" + value.numero + "</p>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
                     "</div>"
                 ;
                 contentHtml += cell;
             });
+            // Mete los datos en una clase
             $(".myRests").html(contentHtml);
             console.log("Load was performed.");
         });

@@ -14,7 +14,6 @@ body {
     }
 }
 
-
 .portfolio-item {
     margin-bottom: 30px;
 }
@@ -37,32 +36,32 @@ body {
     margin-bottom: 20px;
 }
 
-.pb-5, .py-5{
+.pb-5, .py-5 {
     padding-bottom: 1rem !important;
 }
 
-.pt-5, .py-5{
+.pt-5, .py-5 {
     padding-top: 1rem !important;
 }
 
-.rest{
+.rest {
     margin-bottom: 20px;
 }
 
-.opi{
+.opi {
     margin: 10px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     right: 0;
     left: auto;
 }
 
-.btn-group{
+.btn-group {
     margin-left: 10px;
 }
 
-.mrg{
+.mrg {
     margin: 10px;
 }
 

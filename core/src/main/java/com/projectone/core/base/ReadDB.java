@@ -11,14 +11,15 @@ import java.util.function.Function;
  * Llegeix la com.projectone.core.base de dades que està ubicada a la IP indicada "35.205.41.45:1521"
  */
 public class ReadDB {
-//  Definición de Strings que se usan para la conexión con la base de datos. Driver, URL, usuario y contraseña
+    //  Definición de Strings que se usan para la conexión con la base de datos. Driver, URL, usuario y contraseña
     private static final String DRIVER = "oracle.jdbc.driver.OracleDriver";
     private static final String THIN_URL = "jdbc:oracle:thin:@35.205.41.45:1521:XE";
     private static final String USER = "usuari";
     private static final String PASSWORD = "usuari";
 
-//  Objeto que ejecuta la Query. Le definimos que le tiene que llegar un String "query", que contiene la consulta a la BD.
-//  Se le define una función, que realiza la conexión a la base de datos, ejecuta la query que se le pasa, convierte el resultado en un objeto y nos lo devuelve.
+    //  Objeto que ejecuta la Query. Le definimos que le tiene que llegar un String "query", que contiene la consulta a la BD.
+//  Se le define una función, que realiza la conexión a la base de datos, ejecuta la query que se le pasa,
+//  convierte el resultado en un objeto y nos lo devuelve.
     private Object executeQuery(String query, Function<ResultSet, Object> f) {
         Connection con;
         Statement stmt;
@@ -39,7 +40,7 @@ public class ReadDB {
         }
     }
 
-// Crea una lista con el resultado de la BD. Define dos maneras de realizar la Query.
+    // Crea una lista con el resultado de la BD. Define dos maneras de realizar la Query.
     public List readRestaurantAPI(boolean isTraditionalSearch) {
         // ArrayList de Restaurantes
         List<Restaurant> arrayRestaurants = new ArrayList<>();
